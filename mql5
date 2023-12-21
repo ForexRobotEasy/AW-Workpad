@@ -1,0 +1,62 @@
+
+//+------------------------------------------------------------------+
+//|                                                  AW Workpad.mq5 |
+//|                                         Copyright 2022, Forex Robot Easy Team |
+//|                                      https://www.forexroboteasy.com |
+//+------------------------------------------------------------------+
+
+// Define constants for order type
+enum OrderType
+{
+    BUY,
+    SELL
+};
+
+// Define trade settings
+struct TradeSettings
+{
+    double stopLoss;
+    double takeProfit;
+    bool lockPositions;
+    double breakevenLevel;
+    bool applyPredefinedSettings;
+};
+
+// Open or modify a trade order
+void OpenModifyOrder(OrderType orderType, double price, TradeSettings tradeSettings)
+{
+    // TODO: Implement opening or modifying a trade order based on the given parameters
+    
+    // Print the order details
+    Print('Order Type: ', orderType);
+    Print('Price: ', price);
+    Print('Stop Loss: ', tradeSettings.stopLoss);
+    Print('Take Profit: ', tradeSettings.takeProfit);
+    Print('Lock Positions: ', tradeSettings.lockPositions);
+    Print('Breakeven Level: ', tradeSettings.breakevenLevel);
+    Print('Apply Predefined Settings: ', tradeSettings.applyPredefinedSettings);
+}
+
+void OnStart()
+{
+    // Example usage of OpenModifyOrder function
+    double price = 1.23456;
+    
+    // Open a buy order
+    TradeSettings buySettings;
+    buySettings.stopLoss = 1.23000;
+    buySettings.takeProfit = 1.24000;
+    buySettings.lockPositions = false;
+    buySettings.breakevenLevel = 1.23500;
+    buySettings.applyPredefinedSettings = true;
+    OpenModifyOrder(BUY, price, buySettings);
+    
+    // Modify a sell order
+    TradeSettings sellSettings;
+    sellSettings.stopLoss = 1.24500;
+    sellSettings.takeProfit = 1.23500;
+    sellSettings.lockPositions = true;
+    sellSettings.breakevenLevel = 1.24000;
+    sellSettings.applyPredefinedSettings = false;
+    OpenModifyOrder(SELL, price, sellSettings);
+}
